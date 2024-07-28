@@ -4,8 +4,8 @@ import TextForm from "./components/Textform";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
 // Switch as been replaced by Routes in React js
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
-import About from "./components/About";
+// import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+// import About from "./components/About";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -42,31 +42,23 @@ function App() {
   };
   return (
     <>
-      <Router>
-        <Navbar
-          title="TextEditor"
-          aboutText="About TextEditor"
+      <Navbar
+        title="TextEditor"
+        aboutText="About TextEditor"
+        mode={mode}
+        toggleMode={toggleMode}
+      />
+      <Alert alert={alert} />
+      <div className="container my-3">
+        <TextForm
+          showAlert={showAlert}
+          heading="Enter the text to analyze below"
           mode={mode}
-          toggleMode={toggleMode}
         />
-        <Alert alert={alert} />
-        <div className="container my-3">
-          <Routes>
-            <Route path="/about" element={<About />} />
-            <Route
-              path="/"
-              element={
-                <TextForm
-                  showAlert={showAlert}
-                  heading="Enter the text to analyze below"
-                  mode={mode}
-                />
-              }
-            />
-          </Routes>
-        </div>
-      </Router>
+      </div>
     </>
   );
 }
 export default App;
+
+//.https://create-react-app.dev/docs/deployment/- link to deploy react app
